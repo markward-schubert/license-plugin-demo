@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.markwardschubert</groupId>
+	<artifactId>license-plugin-demo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Maven License Plugin Demo</name>
+
+	<description>Project to demonstrate the Maven License Plugin</description>
+
+	<inceptionYear>2015</inceptionYear>
+	<organization>
+		<name>Markward Schubert</name>
+	</organization>
+
+	<modules>
+		<module>library</module>
+		<module>webapplication</module>
+	</modules>
+
+	<!-- Purely informative license information, applying to this project -->
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>1.8</version>
+
+					<configuration>
+
+						<!-- license to use for the project -->
+						<licenseName>apache_v2</licenseName>
+
+						<!-- specifies the folders to consider for header replacement -->
+						<roots>
+							<root>src/main/java</root>
+							<root>src/main/resources</root>
+							<root>src/test</root>
+						</roots>
+
+						<!-- whether the missing file should be used -->
+						<!-- <useMissingFile>true</useMissingFile> -->
+
+						<!-- exclude test-scoped dependencies from the 3rd party license-list -->
+						<!-- <excludedScopes>test</excludedScopes> -->
+
+						<!-- <licenseMerges> <licenseMerge>Apache License, Version 2.0|The 
+							Apache Software License, Version 2.0</licenseMerge> </licenseMerges> -->
+					</configuration>
+
+					<executions>
+						<execution>
+							<id>first</id>
+							<goals>
+								<!-- updates the source's headers according to the specified license -->
+								<!-- <goal>update-file-header</goal> -->
+
+								<!-- Adds the full-blown licensefile to the final product -->
+								<!-- <goal>update-project-license</goal> -->
+
+								<!-- generate and add a list of third-party licenses -->
+								<!-- <goal>add-third-party</goal> -->
+							</goals>
+							<phase>process-sources</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>

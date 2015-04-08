@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- This is a dummy configuration file in xml -->
+
+	<key1>value1</key1>
+
+	<key2>value2</key2>
+
+	<key3>value3</key3>
+
+</configuration>
